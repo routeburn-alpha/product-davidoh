@@ -109,7 +109,6 @@
 		max-width: 640px;
 		margin: 0 auto;
 		padding: 1rem 1.5rem 3rem;
-		font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 	}
 
 	.progress-row {

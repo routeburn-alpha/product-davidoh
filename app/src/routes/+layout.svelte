@@ -17,9 +17,14 @@
 {@render children()}
 
 <style>
+	:global(:root) {
+		--font-sans: 'Comic Sans MS', 'Comic Sans', cursive;
+	}
+
 	:global(body) {
 		margin: 0;
 		background: #fafafa;
+		font-family: var(--font-sans);
 	}
 
 	.top-nav {
@@ -29,7 +34,6 @@
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 	}
 
 	.brand {
