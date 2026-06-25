@@ -1,0 +1,87 @@
+{
+  "id": "world-cup-2026",
+  "title": "World Cup 2026",
+  "category": "Sports",
+  "description": "Test your knowledge of the 2026 FIFA World Cup — the first to feature 48 teams across the United States, Canada, and Mexico.",
+  "questions": [
+    {
+      "id": "wc26-1",
+      "prompt": "How many teams participated in the 2026 FIFA World Cup, marking the first expansion to this format?",
+      "choices": ["32", "36", "48", "64"],
+      "correctIndex": 2,
+      "difficulty": 1,
+      "explanation": "The 2026 World Cup expanded to 48 teams, up from the 32-team format used since 1998."
+    },
+    {
+      "id": "wc26-2",
+      "prompt": "Which three countries co-hosted the 2026 FIFA World Cup?",
+      "choices": [
+        "USA, Brazil, Canada",
+        "USA, Canada, Mexico",
+        "USA, Mexico, Argentina",
+        "Canada, Mexico, Brazil"
+      ],
+      "correctIndex": 1,
+      "difficulty": 1,
+      "explanation": "The United States, Canada, and Mexico co-hosted the 2026 World Cup — the first tournament with three host nations."
+    },
+    {
+      "id": "wc26-3",
+      "prompt": "Which stadium hosted the 2026 FIFA World Cup Final?",
+      "choices": [
+        "Rose Bowl, Los Angeles",
+        "MetLife Stadium, New Jersey",
+        "AT&T Stadium, Dallas",
+        "Estadio Azteca, Mexico City"
+      ],
+      "correctIndex": 1,
+      "difficulty": 2,
+      "explanation": "MetLife Stadium in New Jersey hosted the 2026 World Cup Final."
+    },
+    {
+      "id": "wc26-4",
+      "prompt": "Which historic venue hosted matches at both the 1970 and 2026 FIFA World Cups?",
+      "choices": [
+        "Maracanã, Rio de Janeiro",
+        "Wembley Stadium, London",
+        "Estadio Azteca, Mexico City",
+        "Camp Nou, Barcelona"
+      ],
+      "correctIndex": 2,
+      "difficulty": 2,
+      "explanation": "Estadio Azteca in Mexico City hosted games in 1970, 1986, and again in 2026, making it the only stadium to host matches at three World Cups."
+    },
+    {
+      "id": "wc26-5",
+      "prompt": "In the new 48-team group stage format, how many teams advanced from each group of three?",
+      "choices": ["1", "2", "3", "All three plus best third-place sides"],
+      "correctIndex": 1,
+      "difficulty": 2,
+      "explanation": "The 2026 World Cup used 16 groups of three teams, with the top two from each group advancing to a 32-team knockout round."
+    },
+    {
+      "id": "wc26-6",
+      "prompt": "Which confederation qualified the most teams for the 2026 FIFA World Cup?",
+      "choices": ["UEFA (Europe)", "CONMEBOL (South America)", "AFC (Asia)", "CAF (Africa)"],
+      "correctIndex": 0,
+      "difficulty": 2,
+      "explanation": "UEFA received 16 spots in the expanded 48-team tournament, the largest allocation of any confederation."
+    },
+    {
+      "id": "wc26-7",
+      "prompt": "Roughly how many cities across the three host nations staged 2026 World Cup matches?",
+      "choices": ["6", "10", "16", "20"],
+      "correctIndex": 2,
+      "difficulty": 3,
+      "explanation": "The tournament spanned 16 host cities: 11 in the United States, 2 in Canada, and 3 in Mexico."
+    },
+    {
+      "id": "wc26-8",
+      "prompt": "Which Canadian city hosted group-stage matches at the 2026 FIFA World Cup?",
+      "choices": ["Toronto", "Vancouver", "Montreal", "Both Toronto and Vancouver"],
+      "correctIndex": 3,
+      "difficulty": 3,
+      "explanation": "Both Toronto (BMO Field) and Vancouver (BC Place) hosted 2026 World Cup group-stage matches for Canada."
+    }
+  ]
+}
