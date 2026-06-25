@@ -52,13 +52,13 @@
 	h1 {
 		font-size: 2.25rem;
 		font-weight: 800;
-		color: #111;
+		color: var(--text-1);
 		margin: 0;
 		letter-spacing: -0.02em;
 	}
 
 	.subtitle {
-		color: #555;
+		color: var(--text-2);
 		margin: 0.5rem 0 0;
 		font-size: 1rem;
 		max-width: 60ch;
@@ -66,7 +66,7 @@
 
 	.pack-grid {
 		display: grid;
-		grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+		grid-template-columns: 1fr;
 		gap: 1rem;
 	}
 
@@ -74,17 +74,17 @@
 		display: flex;
 		flex-direction: column;
 		gap: 0.75rem;
-		border: 1px solid #e2e2e2;
+		border: 1px solid var(--border);
 		border-radius: 12px;
 		padding: 1.25rem;
-		background: #fff;
+		background: var(--surface);
 		text-decoration: none;
 		color: inherit;
 		transition: border-color 120ms ease, transform 120ms ease, box-shadow 120ms ease;
 	}
 
 	.pack-card:hover {
-		border-color: #1d4ed8;
+		border-color: var(--accent);
 		transform: translateY(-2px);
 		box-shadow: 0 6px 20px rgba(29, 78, 216, 0.08);
 	}
@@ -99,7 +99,7 @@
 	h2 {
 		font-size: 1.05rem;
 		font-weight: 700;
-		color: #111;
+		color: var(--text-1);
 		margin: 0;
 	}
 
@@ -110,13 +110,13 @@
 		border-radius: 4px;
 		text-transform: uppercase;
 		letter-spacing: 0.04em;
-		background: #f0f9ff;
-		color: #1d4ed8;
+		background: var(--accent-bg);
+		color: var(--accent);
 		white-space: nowrap;
 	}
 
 	.description {
-		color: #555;
+		color: var(--text-2);
 		font-size: 0.9rem;
 		line-height: 1.5;
 		margin: 0;
@@ -128,26 +128,26 @@
 		justify-content: space-between;
 		align-items: center;
 		font-size: 0.85rem;
-		color: #888;
+		color: var(--text-3);
 	}
 
 	.play {
-		color: #1d4ed8;
+		color: var(--accent);
 		font-weight: 600;
 	}
 
 	footer {
 		margin-top: 3rem;
 		padding-top: 1.5rem;
-		border-top: 1px solid #e2e2e2;
-		color: #666;
+		border-top: 1px solid var(--border);
+		color: var(--text-3);
 		font-size: 0.875rem;
 		line-height: 1.6;
 	}
 
 	code {
 		font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;
-		background: #f5f5f5;
+		background: var(--code-bg);
 		padding: 0.1rem 0.35rem;
 		border-radius: 4px;
 		font-size: 0.85em;

@@ -120,7 +120,7 @@
 	}
 
 	.back {
-		color: #1d4ed8;
+		color: var(--accent);
 		text-decoration: none;
 		font-weight: 500;
 	}
@@ -130,21 +130,21 @@
 	}
 
 	.progress {
-		color: #888;
+		color: var(--text-3);
 	}
 
 	.pack-title {
 		font-size: 1rem;
 		font-weight: 600;
-		color: #888;
+		color: var(--text-3);
 		margin: 0 0 0.75rem;
 		text-transform: uppercase;
 		letter-spacing: 0.04em;
 	}
 
 	.question-card {
-		background: #fff;
-		border: 1px solid #e2e2e2;
+		background: var(--surface);
+		border: 1px solid var(--border);
 		border-radius: 12px;
 		padding: 1.75rem;
 	}
@@ -152,7 +152,7 @@
 	.prompt {
 		font-size: 1.25rem;
 		font-weight: 600;
-		color: #111;
+		color: var(--text-1);
 		margin: 0 0 1.5rem;
 		line-height: 1.4;
 	}
@@ -169,19 +169,19 @@
 		gap: 0.875rem;
 		text-align: left;
 		padding: 0.875rem 1rem;
-		border: 1.5px solid #e2e2e2;
+		border: 1.5px solid var(--border);
 		border-radius: 10px;
-		background: #fff;
+		background: var(--surface);
 		font: inherit;
 		font-size: 0.95rem;
-		color: #222;
+		color: var(--text-1);
 		cursor: pointer;
 		transition: border-color 100ms ease, background 100ms ease, transform 100ms ease;
 	}
 
 	.choice:not(:disabled):hover {
-		border-color: #1d4ed8;
-		background: #f5f9ff;
+		border-color: var(--accent);
+		background: var(--surface-hover);
 	}
 
 	.choice:disabled {
@@ -189,15 +189,15 @@
 	}
 
 	.choice.correct {
-		border-color: #16a34a;
-		background: #f0fdf4;
-		color: #14532d;
+		border-color: var(--correct);
+		background: var(--correct-bg);
+		color: var(--correct-text);
 	}
 
 	.choice.wrong {
-		border-color: #dc2626;
-		background: #fef2f2;
-		color: #7f1d1d;
+		border-color: var(--wrong);
+		background: var(--wrong-bg);
+		color: var(--wrong-text);
 	}
 
 	.letter {
@@ -207,20 +207,20 @@
 		width: 1.75rem;
 		height: 1.75rem;
 		border-radius: 6px;
-		background: #f5f5f5;
+		background: var(--letter-bg);
 		font-size: 0.8rem;
 		font-weight: 700;
-		color: #555;
+		color: var(--text-2);
 		flex-shrink: 0;
 	}
 
 	.choice.correct .letter {
-		background: #16a34a;
+		background: var(--correct);
 		color: #fff;
 	}
 
 	.choice.wrong .letter {
-		background: #dc2626;
+		background: var(--wrong);
 		color: #fff;
 	}
 
@@ -237,13 +237,13 @@
 	}
 
 	.explanation.correct {
-		background: #f0fdf4;
-		color: #14532d;
+		background: var(--correct-bg);
+		color: var(--correct-text);
 	}
 
 	.explanation.wrong {
-		background: #fef2f2;
-		color: #7f1d1d;
+		background: var(--wrong-bg);
+		color: var(--wrong-text);
 	}
 
 	.next {
@@ -252,7 +252,7 @@
 		padding: 0.75rem 1rem;
 		border: none;
 		border-radius: 8px;
-		background: #1d4ed8;
+		background: var(--accent);
 		color: #fff;
 		font: inherit;
 		font-weight: 600;
@@ -262,20 +262,20 @@
 	}
 
 	.next:hover {
-		background: #1e40af;
+		background: var(--accent-hover);
 	}
 
 	.result-card {
 		text-align: center;
-		background: #fff;
-		border: 1px solid #e2e2e2;
+		background: var(--surface);
+		border: 1px solid var(--border);
 		border-radius: 12px;
 		padding: 3rem 2rem;
 		margin-top: 1rem;
 	}
 
 	.result-label {
-		color: #888;
+		color: var(--text-3);
 		font-size: 0.9rem;
 		font-weight: 600;
 		text-transform: uppercase;
@@ -286,19 +286,19 @@
 	.result-score {
 		font-size: 4rem;
 		font-weight: 800;
-		color: #1d4ed8;
+		color: var(--accent);
 		margin: 0;
 		line-height: 1;
 	}
 
 	.result-score .of {
-		color: #888;
+		color: var(--text-3);
 		font-weight: 400;
 		font-size: 2rem;
 	}
 
 	.result-summary {
-		color: #555;
+		color: var(--text-2);
 		font-size: 1rem;
 		margin: 1.5rem auto 2rem;
 		max-width: 36ch;
@@ -311,7 +311,8 @@
 		justify-content: center;
 	}
 
-	.primary, .secondary {
+	.primary,
+	.secondary {
 		padding: 0.75rem 1.25rem;
 		border-radius: 8px;
 		font: inherit;
@@ -324,22 +325,22 @@
 	}
 
 	.primary {
-		background: #1d4ed8;
+		background: var(--accent);
 		color: #fff;
 		border: none;
 	}
 
 	.primary:hover {
-		background: #1e40af;
+		background: var(--accent-hover);
 	}
 
 	.secondary {
-		background: #fff;
-		color: #1d4ed8;
-		border: 1.5px solid #1d4ed8;
+		background: var(--surface);
+		color: var(--accent);
+		border: 1.5px solid var(--accent);
 	}
 
 	.secondary:hover {
-		background: #f5f9ff;
+		background: var(--surface-hover);
 	}
 </style>
