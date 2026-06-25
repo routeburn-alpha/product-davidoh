@@ -29,12 +29,9 @@
 {@render children()}
 
 <style>
-	:global(:root) {
-		--font-sans: 'Comic Sans MS', 'Comic Sans', cursive;
-	}
-
 	:global(body) {
 		margin: 0;
+		font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 		background: var(--bg);
 		color: var(--text-1);
 	}
