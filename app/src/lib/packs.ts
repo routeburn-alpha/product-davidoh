@@ -16,6 +16,9 @@ export type Pack = {
 	category: string;
 	description: string;
 	questions: Question[];
+	coverEmoji?: string;
+	coverColor?: string;
+	addedAt?: string;
 };
 
 const PACKS_DIR = resolve('src/lib/data/packs');
