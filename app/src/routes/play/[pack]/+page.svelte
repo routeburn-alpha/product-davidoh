@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { base } from '$app/paths';
 	import type { Pack } from '$lib/packs';
+	import { addScore } from '$lib/leaderboard';
 
 	let { data } = $props();
 	const pack = $derived<Pack>(data.pack);
@@ -8,7 +9,9 @@
 	let index = $state(0);
 	let selected = $state<number | null>(null);
 	let answers = $state<number[]>([]);
-	let finished = $state(false);
+	let step = $state<'quiz' | 'name' | 'result'>('quiz');
+	let playerName = $state('');
+	let rank = $state<number | null>(null);
 
 	const question = $derived(pack.questions[index]);
 	const isCorrect = $derived(selected !== null && selected === question.correctIndex);
@@ -25,23 +28,42 @@
 		if (selected === null) return;
 		answers = [...answers, selected];
 		if (index + 1 >= pack.questions.length) {
-			finished = true;
+			step = 'name';
 		} else {
 			index = index + 1;
 			selected = null;
 		}
 	}
 
+	function submitName() {
+		const scores = addScore({
+			name: playerName.trim() || 'Anonymous',
+			packId: pack.id,
+			packTitle: pack.title,
+			score,
+			total: pack.questions.length
+		});
+		const pct = score / pack.questions.length;
+		rank = scores.findIndex((s) => s.score / s.total <= pct) + 1;
+		step = 'result';
+	}
+
+	function skipName() {
+		step = 'result';
+	}
+
 	function restart() {
 		index = 0;
 		selected = null;
 		answers = [];
-		finished = false;
+		step = 'quiz';
+		playerName = '';
+		rank = null;
 	}
 </script>
 
 <div class="container">
-	{#if !finished}
+	{#if step === 'quiz'}
 		<div class="progress-row">
 			<a class="back" href="{base}/">← All packs</a>
 			<span class="progress">Question {index + 1} of {pack.questions.length}</span>
@@ -81,10 +103,37 @@
 				</button>
 			{/if}
 		</div>
+
+	{:else if step === 'name'}
+		<div class="result-card">
+			<p class="result-label">You scored</p>
+			<p class="result-score">{score} <span class="of">/ {pack.questions.length}</span></p>
+			<div class="name-prompt">
+				<p class="name-label">Add your name to the leaderboard</p>
+				<form onsubmit={(e) => { e.preventDefault(); submitName(); }}>
+					<input
+						class="name-input"
+						type="text"
+						placeholder="Your name"
+						maxlength="32"
+						bind:value={playerName}
+						autofocus
+					/>
+					<div class="name-actions">
+						<button type="submit" class="primary">Add to leaderboard</button>
+						<button type="button" class="skip" onclick={skipName}>Skip</button>
+					</div>
+				</form>
+			</div>
+		</div>
+
 	{:else}
 		<div class="result-card">
 			<p class="result-label">You scored</p>
 			<p class="result-score">{score} <span class="of">/ {pack.questions.length}</span></p>
+			{#if rank !== null}
+				<p class="rank">#{rank} on the leaderboard</p>
+			{/if}
 			<p class="result-summary">
 				{#if score === pack.questions.length}
 					Perfect round. Send this pack to a friend who thinks they're better.
@@ -297,6 +346,50 @@
 		font-size: 2rem;
 	}
 
+	.rank {
+		margin: 0.75rem 0 0;
+		font-size: 0.9rem;
+		font-weight: 600;
+		color: var(--accent);
+	}
+
+	.name-prompt {
+		margin-top: 2rem;
+		text-align: left;
+	}
+
+	.name-label {
+		font-size: 0.9rem;
+		font-weight: 600;
+		color: var(--text-2);
+		margin: 0 0 0.75rem;
+		text-align: center;
+	}
+
+	.name-input {
+		width: 100%;
+		padding: 0.75rem 1rem;
+		border: 1.5px solid var(--border);
+		border-radius: 8px;
+		background: var(--bg);
+		color: var(--text-1);
+		font: inherit;
+		font-size: 1rem;
+		box-sizing: border-box;
+		outline: none;
+	}
+
+	.name-input:focus {
+		border-color: var(--accent);
+	}
+
+	.name-actions {
+		display: flex;
+		gap: 0.75rem;
+		margin-top: 0.75rem;
+		justify-content: center;
+	}
+
 	.result-summary {
 		color: var(--text-2);
 		font-size: 1rem;
@@ -342,5 +435,19 @@
 
 	.secondary:hover {
 		background: var(--surface-hover);
+	}
+
+	.skip {
+		background: none;
+		border: none;
+		color: var(--text-3);
+		font: inherit;
+		font-size: 0.9rem;
+		cursor: pointer;
+		padding: 0.75rem 0.5rem;
+	}
+
+	.skip:hover {
+		color: var(--text-2);
 	}
 </style>

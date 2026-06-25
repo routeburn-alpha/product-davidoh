@@ -1,9 +1,16 @@
 <script lang="ts">
 	import { base } from '$app/paths';
 	import type { Pack } from '$lib/packs';
+	import { getScores, type ScoreEntry } from '$lib/leaderboard';
+	import { browser } from '$app/environment';
 
 	let { data } = $props();
 	const packs = $derived<Pack[]>(data.packs);
+
+	let scores = $state<ScoreEntry[]>([]);
+	$effect(() => {
+		if (browser) scores = getScores().slice(0, 10);
+	});
 </script>
 
 <div class="container">
@@ -29,6 +36,28 @@
 			{/each}
 		</div>
 	</section>
+
+	{#if scores.length > 0}
+		<section class="leaderboard">
+			<h2 class="lb-title">Leaderboard</h2>
+			<div class="lb-table">
+				<div class="lb-header">
+					<span class="lb-rank">#</span>
+					<span class="lb-name">Name</span>
+					<span class="lb-pack">Pack</span>
+					<span class="lb-score">Score</span>
+				</div>
+				{#each scores as entry, i (i)}
+					<div class="lb-row">
+						<span class="lb-rank">{i + 1}</span>
+						<span class="lb-name">{entry.name}</span>
+						<span class="lb-pack">{entry.packTitle}</span>
+						<span class="lb-score">{entry.score}/{entry.total}</span>
+					</div>
+				{/each}
+			</div>
+		</section>
+	{/if}
 
 	<footer>
 		<p>
@@ -134,6 +163,84 @@
 	.play {
 		color: var(--accent);
 		font-weight: 600;
+	}
+
+	.leaderboard {
+		margin-top: 3rem;
+	}
+
+	.lb-title {
+		font-size: 1.1rem;
+		font-weight: 700;
+		color: var(--text-1);
+		margin: 0 0 1rem;
+	}
+
+	.lb-table {
+		border: 1px solid var(--border);
+		border-radius: 10px;
+		overflow: hidden;
+	}
+
+	.lb-header,
+	.lb-row {
+		display: grid;
+		grid-template-columns: 2rem 1fr 1fr 4rem;
+		gap: 0.75rem;
+		padding: 0.6rem 1rem;
+		align-items: center;
+		font-size: 0.875rem;
+	}
+
+	.lb-header {
+		background: var(--surface);
+		color: var(--text-3);
+		font-weight: 600;
+		font-size: 0.75rem;
+		text-transform: uppercase;
+		letter-spacing: 0.04em;
+		border-bottom: 1px solid var(--border);
+	}
+
+	.lb-row {
+		background: var(--bg);
+		color: var(--text-2);
+		border-bottom: 1px solid var(--border);
+	}
+
+	.lb-row:last-child {
+		border-bottom: none;
+	}
+
+	.lb-rank {
+		color: var(--text-3);
+		font-weight: 700;
+		font-size: 0.8rem;
+	}
+
+	.lb-row .lb-rank:first-child {
+		color: var(--accent);
+	}
+
+	.lb-name {
+		font-weight: 600;
+		color: var(--text-1);
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+
+	.lb-pack {
+		color: var(--text-3);
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+
+	.lb-score {
+		text-align: right;
+		font-weight: 600;
+		color: var(--accent);
 	}
 
 	footer {
